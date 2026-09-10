@@ -7,7 +7,9 @@ interface Props {
   canonicalPath?: string;
 }
 
-const base = import.meta.env.BASE_URL;
+const base = import.meta.env.BASE_URL.endsWith('/')
+  ? import.meta.env.BASE_URL
+  : `${import.meta.env.BASE_URL}/`;
 const site = Astro.site?.toString().replace(/\/$/, '') ?? 'https://teassty.github.io';
 const {
   title = 'Мебельная фабрика «Славика» — мебель на заказ в Кургане и Тюмени',

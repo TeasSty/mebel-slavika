@@ -1,0 +1,442 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+
+const base = import.meta.env.BASE_URL;
+
+const directions = [
+  {
+    title: 'Кухни на заказ',
+    text: 'Планировка под ваш проём, технику и привычки семьи.',
+    img: 'images/dir-kitchen.webp',
+    alt: 'Современная кухня с деревянными фасадами',
+    wide: true,
+  },
+  {
+    title: 'Шкафы-купе',
+    text: 'Встроенные и корпусные системы хранения.',
+    img: 'images/dir-wardrobe.webp',
+    alt: 'Шкаф-купе в современном интерьере',
+  },
+  {
+    title: 'Гардеробные',
+    text: 'Организация пространства под одежду и аксессуары.',
+    img: 'images/dir-closet.webp',
+    alt: 'Гардеробная комната с деревянными полками',
+  },
+  {
+    title: 'Детские',
+    text: 'Мебель, которая растёт вместе с ребёнком.',
+    img: 'images/dir-kids.webp',
+    alt: 'Детская комната с корпусной мебелью',
+  },
+  {
+    title: 'Гостиные',
+    text: 'ТВ-зоны, стеллажи и системы под гостиную.',
+    img: 'images/dir-living.webp',
+    alt: 'Гостиная с корпусной мебелью',
+  },
+  {
+    title: 'Индивидуальные проекты',
+    text: 'Корпусная мебель по чертежу вашего помещения.',
+    img: 'images/dir-custom.webp',
+    alt: 'Индивидуальный мебельный проект в интерьере',
+  },
+];
+
+const projects = [
+  {
+    label: 'Кухня',
+    title: 'Линия под окно и остров',
+    text: 'Светлые фасады, тёплый пол, спокойная геометрия — мебель читается как часть архитектуры комнаты.',
+    img: 'images/project-1.webp',
+    alt: 'Современная светлая кухня с островом',
+  },
+  {
+    label: 'Хранение',
+    title: 'Шкаф в нишу',
+    text: 'Фасады в тон стен, скрытые ручки, максимум полезного объёма без визуального шума.',
+    img: 'images/project-2.webp',
+    alt: 'Встроенный шкаф в современном интерьере',
+  },
+  {
+    label: 'Гостиная',
+    title: 'Подвесная ТВ-зона',
+    text: 'Компактный низкий модуль и вертикальный пенал — чистая композиция под телевизор.',
+    img: 'images/project-3.webp',
+    alt: 'Подвесная ТВ-зона в гостиной',
+  },
+];
+
+const steps = [
+  {
+    num: '01',
+    title: 'Замер',
+    text: 'Бесплатный выезд: снимаем размеры, обсуждаем задачи и ограничения помещения.',
+  },
+  {
+    num: '02',
+    title: '3D-проект',
+    text: 'Показываем будущую мебель в объёме: материалы, фурнитура, сценарии хранения.',
+  },
+  {
+    num: '03',
+    title: 'Производство',
+    text: 'Изготавливаем на собственном производстве — от раскроя до сборки корпусов.',
+  },
+  {
+    num: '04',
+    title: 'Монтаж',
+    text: 'Доставка, подъём и установка силами наших бригад монтажников.',
+  },
+];
+
+const facts = [
+  {
+    title: 'С 2010 года',
+    text: 'Своё производство корпусной мебели на заказ.',
+  },
+  {
+    title: '3 бригады монтажников',
+    text: 'Доставка, подъём и установка под ключ.',
+  },
+  {
+    title: '3D-проектирование',
+    text: 'Видите результат до запуска в цех.',
+  },
+  {
+    title: 'Гарантия 1 год',
+    text: 'На изготовленную мебель.',
+  },
+  {
+    title: 'Курган и Тюмень',
+    text: 'Работаем по городу и области.',
+  },
+  {
+    title: 'Бесплатный замер',
+    text: 'Консультация и замер без оплаты.',
+  },
+];
+---
+
+<BaseLayout>
+  <header class="site-header">
+    <div class="wrap site-header__inner">
+      <a class="brand" href={`${base}#`} aria-label="Мебельная фабрика Славика — на главную">
+        <span class="brand__mark">Славика</span>
+        <span class="brand__sub">Мебельная фабрика</span>
+      </a>
+      <nav class="nav" aria-label="Основная навигация">
+        <a href={`${base}#directions`}>Направления</a>
+        <a href={`${base}#projects`}>Работы</a>
+        <a href={`${base}#process`}>Как работаем</a>
+        <a href={`${base}#contacts`}>Контакты</a>
+      </nav>
+      <a class="header-phone" href="tel:+79091756111">8 (909) 175-61-11</a>
+    </div>
+  </header>
+
+  <main id="main">
+    <section class="hero" aria-labelledby="hero-title">
+      <div class="hero__media" aria-hidden="true">
+        <img
+          src={`${base}images/hero-kitchen.webp`}
+          alt=""
+          width="1920"
+          height="1280"
+          fetchpriority="high"
+        />
+      </div>
+      <div class="hero__shade" aria-hidden="true"></div>
+      <div class="hero__cut" aria-hidden="true"></div>
+      <div class="wrap hero__content">
+        <p class="section-label">Мебельная фабрика «Славика»</p>
+        <h1 id="hero-title">Мебель под ваше пространство</h1>
+        <p class="lead">
+          Кухни, шкафы и корпусная мебель на заказ в Кургане и Тюмени.
+          Своё производство — от замера до установки. Замер бесплатно.
+        </p>
+        <div class="hero__actions">
+          <a class="btn btn-primary" href={`${base}#lead`}>Заказать бесплатный замер</a>
+          <a class="btn btn-ghost" href={`${base}#projects`}>Смотреть работы</a>
+        </div>
+        <div class="hero__meta">
+          <div>
+            <strong>Производство с 2010</strong>
+            Курган · Тюмень и область
+          </div>
+          <div>
+            <strong>Бульвар Мира, 3</strong>
+            <a href="tel:+79091756111">8 (909) 175-61-11</a>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="section directions" id="directions" aria-labelledby="dir-title">
+      <div class="wrap">
+        <p class="section-label reveal">Направления</p>
+        <h2 id="dir-title" class="reveal">Мебель, которая садится в помещение</h2>
+        <p class="lead reveal">
+          Не готовые модули «как есть», а проекты под ваши стены, углы и сценарии жизни.
+        </p>
+        <div class="directions__grid">
+          {
+            directions.map((d) => (
+              <a
+                class={`dir-slice reveal${d.wide ? ' dir-slice--wide' : ''}`}
+                href={`${base}#lead`}
+              >
+                <img src={`${base}${d.img}`} alt={d.alt} width="900" height="700" loading="lazy" />
+                <div class="dir-slice__body">
+                  <h3>{d.title}</h3>
+                  <p>{d.text}</p>
+                </div>
+              </a>
+            ))
+          }
+        </div>
+      </div>
+    </section>
+
+    <section class="section projects" id="projects" aria-labelledby="projects-title">
+      <div class="wrap">
+        <p class="section-label reveal">Реализованные проекты</p>
+        <h2 id="projects-title" class="reveal">Крупный план: как выглядит готовая мебель</h2>
+        <p class="lead reveal">
+          Ниже — визуальные ориентиры стиля. На сайте стоят стоковые фото; их нужно заменить
+          реальными работами из группы ВКонтакте.
+        </p>
+        <div class="projects__list">
+          {
+            projects.map((p) => (
+              <article class="project reveal">
+                <div class="project__media">
+                  <img src={`${base}${p.img}`} alt={p.alt} width="1200" height="900" loading="lazy" />
+                </div>
+                <div class="project__text">
+                  <p class="section-label">{p.label}</p>
+                  <h3>{p.title}</h3>
+                  <p>{p.text}</p>
+                  <p class="project__note">Фото-заглушка · заменить на работу Славики</p>
+                </div>
+              </article>
+            ))
+          }
+        </div>
+      </div>
+    </section>
+
+    <section class="section design-brief" id="design" aria-labelledby="design-title">
+      <div class="wrap design-brief__inner">
+        <div class="reveal">
+          <p class="section-label">3D-проектирование</p>
+          <h2 id="design-title">Сначала чертёж, потом цех</h2>
+          <p class="lead">
+            Перед производством согласуем проект в 3D: размеры, материалы, фурнитура.
+            Так вы видите мебель в своём пространстве до раскроя плиты.
+          </p>
+        </div>
+        <div class="design-brief__visual reveal" aria-hidden="true">
+          <img src={`${base}images/design-3d.webp`} alt="" width="900" height="675" loading="lazy" />
+          <div class="design-brief__lines"></div>
+          <div class="design-brief__diag"></div>
+        </div>
+      </div>
+    </section>
+
+    <section class="section process" id="process" aria-labelledby="process-title">
+      <div class="wrap">
+        <p class="section-label reveal">Как работаем</p>
+        <h2 id="process-title" class="reveal">От замера до установки</h2>
+        <p class="lead reveal">Четыре шага без лишней бюрократии — прозрачный путь от идеи до монтажа.</p>
+        <div class="process__track" role="list">
+          {
+            steps.map((s) => (
+              <div class="process-step reveal" role="listitem">
+                <div class="process-step__card">
+                  <div class="process-step__num">{s.num}</div>
+                  <h3>{s.title}</h3>
+                  <p>{s.text}</p>
+                </div>
+              </div>
+            ))
+          }
+        </div>
+      </div>
+    </section>
+
+    <section class="section facts" id="factory" aria-labelledby="facts-title">
+      <div class="wrap">
+        <p class="section-label reveal">Своё производство</p>
+        <h2 id="facts-title" class="reveal">Почему Славика</h2>
+        <p class="lead reveal">Только факты о фабрике — без громких лозунгов.</p>
+        <div class="facts__grid">
+          {
+            facts.map((f) => (
+              <div class="fact reveal">
+                <strong>{f.title}</strong>
+                <p>{f.text}</p>
+              </div>
+            ))
+          }
+        </div>
+      </div>
+    </section>
+
+    <section class="section final-cta" id="lead" aria-labelledby="cta-title">
+      <div class="wrap">
+        <p class="section-label reveal">Бесплатный замер</p>
+        <h2 id="cta-title" class="reveal">Приедем, посмотрим, посчитаем проект</h2>
+        <p class="lead reveal">
+          Оставьте заявку во ВКонтакте или позвоните — обсудим кухню, шкаф или другой проект под ваше помещение.
+        </p>
+        <div class="final-cta__actions reveal">
+          <a class="btn btn-primary" href="https://vk.me/mebelslavika" target="_blank" rel="noopener noreferrer">
+            Написать в VK
+          </a>
+          <a class="btn btn-ink" href="tel:+79091756111">Позвонить 8 (909) 175-61-11</a>
+          <a class="btn btn-outline" href="tel:+73552559339">55-93-39</a>
+        </div>
+      </div>
+    </section>
+
+    <section class="section contacts" id="contacts" aria-labelledby="contacts-title">
+      <div class="wrap">
+        <p class="section-label reveal">Контакты</p>
+        <h2 id="contacts-title" class="reveal">Курган, Бульвар Мира, 3</h2>
+        <div class="contacts__grid">
+          <div class="reveal">
+            <ul class="contact-list">
+              <li>
+                <span>Телефон</span>
+                <a href="tel:+79091756111">8 (909) 175-61-11</a>
+              </li>
+              <li>
+                <span>Дополнительный</span>
+                <a href="tel:+73552559339">55-93-39</a>
+              </li>
+              <li>
+                <span>Адрес</span>
+                <a
+                  href="https://yandex.ru/maps/?text=%D0%9A%D1%83%D1%80%D0%B3%D0%B0%D0%BD%2C%20%D0%91%D1%83%D0%BB%D1%8C%D0%B2%D0%B0%D1%80%20%D0%9C%D0%B8%D1%80%D0%B0%203"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                >
+                  Бульвар Мира, 3, Курган
+                </a>
+              </li>
+              <li>
+                <span>ВКонтакте</span>
+                <a href="https://vk.ru/mebelslavika" target="_blank" rel="noopener noreferrer">
+                  vk.ru/mebelslavika
+                </a>
+              </li>
+            </ul>
+
+            <form class="lead-form" id="measure-form">
+              <h3>Заявка на замер</h3>
+              <p>
+                Форма откроет диалог ВК или почту с готовым текстом — без фейковой отправки.
+              </p>
+              <div class="form-row form-row--2">
+                <div class="form-field">
+                  <label for="name">Имя</label>
+                  <input id="name" name="name" type="text" autocomplete="name" required placeholder="Как к вам обращаться" />
+                </div>
+                <div class="form-field">
+                  <label for="phone">Телефон</label>
+                  <input id="phone" name="phone" type="tel" autocomplete="tel" required placeholder="+7 …" />
+                </div>
+              </div>
+              <div class="form-row">
+                <div class="form-field">
+                  <label for="comment">Комментарий</label>
+                  <textarea id="comment" name="comment" placeholder="Кухня / шкаф / адрес объекта"></textarea>
+                </div>
+              </div>
+              <div class="form-actions">
+                <button class="btn btn-primary" type="submit" data-action="vk">Отправить в VK</button>
+                <button class="btn btn-outline" type="submit" data-action="mail">Открыть письмо</button>
+                <a class="btn btn-ink" href="tel:+79091756111">Позвонить</a>
+              </div>
+              <p class="form-hint">
+                Нажимая «Отправить в VK», вы перейдёте в чат
+                <a href="https://vk.me/mebelslavika" target="_blank" rel="noopener noreferrer">vk.me/mebelslavika</a>
+                с текстом заявки для вставки.
+              </p>
+            </form>
+          </div>
+
+          <div class="map-embed reveal">
+            <iframe
+              title="Карта: Бульвар Мира 3, Курган"
+              loading="lazy"
+              referrerpolicy="no-referrer-when-downgrade"
+              src="https://yandex.ru/map-widget/v1/?ll=65.341000%2C55.444000&z=16&pt=65.341000%2C55.444000%2Cpm2rdm&l=map&text=%D0%9A%D1%83%D1%80%D0%B3%D0%B0%D0%BD%2C%20%D0%91%D1%83%D0%BB%D1%8C%D0%B2%D0%B0%D1%80%20%D0%9C%D0%B8%D1%80%D0%B0%203"
+            ></iframe>
+            <div class="map-embed__fallback">
+              <a
+                href="https://yandex.ru/maps/?text=%D0%9A%D1%83%D1%80%D0%B3%D0%B0%D0%BD%2C%20%D0%91%D1%83%D0%BB%D1%8C%D0%B2%D0%B0%D1%80%20%D0%9C%D0%B8%D1%80%D0%B0%203"
+                target="_blank"
+                rel="noopener noreferrer"
+              >
+                Открыть в Яндекс Картах
+              </a>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer class="site-footer">
+    <div class="wrap site-footer__inner">
+      <div>
+        <strong style="color: var(--cream)">Мебельная фабрика «Славика»</strong>
+        <div>Курган · Тюмень и область</div>
+      </div>
+      <div>
+        <a href="https://vk.ru/mebelslavika" target="_blank" rel="noopener noreferrer">ВКонтакте</a>
+        ·
+        <a href="tel:+79091756111">8 (909) 175-61-11</a>
+      </div>
+    </div>
+  </footer>
+
+  <script>
+    const form = document.getElementById('measure-form') as HTMLFormElement | null;
+    if (form) {
+      form.addEventListener('submit', (event) => {
+        event.preventDefault();
+        const submitter = (event as SubmitEvent).submitter as HTMLButtonElement | null;
+        const action = submitter?.dataset?.action ?? 'vk';
+        const name = (form.elements.namedItem('name') as HTMLInputElement)?.value?.trim() || 'Клиент';
+        const phone = (form.elements.namedItem('phone') as HTMLInputElement)?.value?.trim() || '';
+        const comment = (form.elements.namedItem('comment') as HTMLTextAreaElement)?.value?.trim() || '';
+
+        const text = [
+          'Заявка на бесплатный замер (сайт Славика)',
+          `Имя: ${name}`,
+          `Телефон: ${phone}`,
+          comment ? `Комментарий: ${comment}` : '',
+        ]
+          .filter(Boolean)
+          .join('\n');
+
+        if (action === 'mail') {
+          const mailto = `mailto:?subject=${encodeURIComponent('Заявка на замер — Славика')}&body=${encodeURIComponent(text)}`;
+          window.location.href = mailto;
+          return;
+        }
+
+        // VK chat + clipboard for ready-to-paste message
+        try {
+          void navigator.clipboard?.writeText(text);
+        } catch {
+          /* ignore */
+        }
+        window.open('https://vk.me/mebelslavika', '_blank', 'noopener,noreferrer');
+      });
+    }
+  </script>
+</BaseLayout>

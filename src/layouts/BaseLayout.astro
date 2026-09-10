@@ -1,0 +1,125 @@
+---
+import '../styles/global.css';
+
+interface Props {
+  title?: string;
+  description?: string;
+  canonicalPath?: string;
+}
+
+const base = import.meta.env.BASE_URL;
+const site = Astro.site?.toString().replace(/\/$/, '') ?? 'https://teassty.github.io';
+const {
+  title = 'Мебельная фабрика «Славика» — мебель на заказ в Кургане и Тюмени',
+  description = 'Мебель под ваше пространство: кухни, шкафы-купе, гардеробные, детские и гостиные. Собственное производство с 2010 года. Бесплатный замер в Кургане и Тюмени.',
+  canonicalPath = '/',
+} = Astro.props;
+
+const canonical = `${site}${base.replace(/\/$/, '')}${canonicalPath === '/' ? '/' : canonicalPath}`;
+const ogImage = `${site}${base}images/og-kitchen.webp`;
+
+const schema = {
+  '@context': 'https://schema.org',
+  '@type': 'LocalBusiness',
+  '@id': canonical,
+  name: 'Мебельная фабрика «Славика»',
+  description,
+  url: canonical,
+  image: ogImage,
+  telephone: ['+79091756111', '+73552559339'],
+  address: {
+    '@type': 'PostalAddress',
+    streetAddress: 'Бульвар Мира, 3',
+    addressLocality: 'Курган',
+    addressRegion: 'Курганская область',
+    addressCountry: 'RU',
+  },
+  areaServed: [
+    { '@type': 'City', name: 'Курган' },
+    { '@type': 'City', name: 'Тюмень' },
+    { '@type': 'AdministrativeArea', name: 'Тюменская область' },
+  ],
+  sameAs: ['https://vk.ru/mebelslavika'],
+  priceRange: '$$',
+};
+---
+
+<!doctype html>
+<html lang="ru">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="description" content={description} />
+    <meta name="robots" content="index, follow" />
+    <link rel="canonical" href={canonical} />
+    <link rel="icon" type="image/svg+xml" href={`${base}favicon.svg`} />
+
+    <meta property="og:type" content="website" />
+    <meta property="og:locale" content="ru_RU" />
+    <meta property="og:title" content={title} />
+    <meta property="og:description" content={description} />
+    <meta property="og:url" content={canonical} />
+    <meta property="og:image" content={ogImage} />
+    <meta property="og:site_name" content="Мебельная фабрика «Славика»" />
+
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:title" content={title} />
+    <meta name="twitter:description" content={description} />
+    <meta name="twitter:image" content={ogImage} />
+
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Manrope:wght@500;600;700&family=Source+Sans+3:wght@400;500;600&display=swap"
+      rel="stylesheet"
+    />
+
+    <title>{title}</title>
+    <script type="application/ld+json" set:html={JSON.stringify(schema)} />
+  </head>
+  <body>
+    <a class="skip-link" href="#main">К содержимому</a>
+    <slot />
+    <script>
+      const reduce = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+
+      const reveals = document.querySelectorAll('.reveal');
+      if (reduce) {
+        reveals.forEach((el) => el.classList.add('is-in'));
+      } else if ('IntersectionObserver' in window) {
+        const io = new IntersectionObserver(
+          (entries) => {
+            entries.forEach((entry) => {
+              if (entry.isIntersecting) {
+                entry.target.classList.add('is-in');
+                io.unobserve(entry.target);
+              }
+            });
+          },
+          { threshold: 0.18, rootMargin: '0px 0px -8% 0px' }
+        );
+        reveals.forEach((el) => io.observe(el));
+      } else {
+        reveals.forEach((el) => el.classList.add('is-in'));
+      }
+
+      const steps = document.querySelectorAll('.process-step');
+      if (!reduce && steps.length && 'IntersectionObserver' in window) {
+        const stepIo = new IntersectionObserver(
+          (entries) => {
+            entries.forEach((entry) => {
+              if (entry.isIntersecting) {
+                steps.forEach((s) => s.classList.remove('is-active'));
+                entry.target.classList.add('is-active');
+              }
+            });
+          },
+          { threshold: 0.55, rootMargin: '-20% 0px -35% 0px' }
+        );
+        steps.forEach((el) => stepIo.observe(el));
+      } else {
+        steps.forEach((el) => el.classList.add('is-active'));
+      }
+    </script>
+  </body>
+</html>

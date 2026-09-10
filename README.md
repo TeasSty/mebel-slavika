@@ -20,11 +20,9 @@ npm run build
 npm run preview
 ```
 
-## Что заменить перед продакшеном
+## Фотографии
 
-Все изображения в `public/images/` — **стоковые** (Unsplash / Pexels), подобраны как стилевой ориентир.
-
-**Обязательно замените** на реальные фото работ из группы [vk.ru/mebelslavika](https://vk.ru/mebelslavika):
+Изображения в `public/images/` — **реальные работы** фабрики из группы [vk.ru/mebelslavika](https://vk.ru/mebelslavika).
 
 | Файл | Назначение |
 |------|------------|
@@ -33,8 +31,6 @@ npm run preview
 | `project-*.webp` | Блок проектов |
 | `design-3d.webp` | Блок 3D |
 | `og-kitchen.webp` | Open Graph |
-
-После замены фото уберите пометки «Фото-заглушка» в блоке проектов (`src/pages/index.astro`).
 
 ## Заявки
 

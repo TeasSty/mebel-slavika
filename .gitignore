@@ -17,3 +17,6 @@ Thumbs.db
 .vscode/*
 !.vscode/extensions.json
 .netlify/
+
+# local VK photo scratch
+temp-vk/

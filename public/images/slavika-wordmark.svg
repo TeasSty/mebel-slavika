@@ -1,0 +1,12 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 220 64" role="img" aria-label="!;028:0">
+  <defs>
+    <style>
+      .wm {
+        font-family: "Segoe Script", "Brush Script MT", "Apple Chancery", cursive;
+        font-size: 42px;
+        fill: currentColor;
+      }
+    </style>
+  </defs>
+  <text class="wm" x="4" y="46">!;028:0</text>
+</svg>
